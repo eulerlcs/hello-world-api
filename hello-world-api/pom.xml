@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.eulerlcs</groupId>
+		<artifactId>hello-world-service</artifactId>
+		<version>0.0.1</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>hello-world-api</artifactId>
+	<name>hello-world-api</name>
+	<description>hello-world restful api</description>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>hello-world-domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>hello-world-infrastructure</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <configuration>
+                    <allowInsecureRegistries>${docker.allowInsecureRegistries}</allowInsecureRegistries>
+                    <!-- if use http, add a system property sendCredentialsOverHttp=true -->
+
+                    <from>
+                        <!-- <image>amazoncorretto:11.0.11</image>-->
+                        <image>
+                            amazoncorretto@sha256:d0119551910e57869c98dbd58be19bb1c6e031b832a2536a484eba7fec822d7e
+                        </image>
+                    </from>
+                    <to>
+                        <image>${docker.image.prefix}/${docker.image.name}</image>
+                        <tags>
+                            <tag>latest</tag>
+                        </tags>
+                    </to>
+
+                    <container>
+                        <creationTime>${maven.build.timestamp}</creationTime>
+                        <volumes>
+                            <volume>/data</volume>
+                        </volumes>
+                        <environment>
+                            <!-- <spring.avtive.profile>prod</spring.avtive.profile>-->
+                            <TimeZone>Asia/Tokyo</TimeZone>
+                        </environment>
+                    </container>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -7,38 +7,32 @@
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-parent</artifactId>
 	    <version>2.5.1</version>
-		<relativePath />
+		<relativePath></relativePath>
 	</parent>
+
 	<groupId>com.github.eulerlcs</groupId>
 	<artifactId>hello-world-service</artifactId>
 	<version>0.0.1</version>
+	<packaging>pom</packaging>
 	<name>hello-world-service</name>
-	<description>Demo project for monolithic</description>
+	<description>Demo project for backend-service</description>
 
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 
+	<modules>
+		<module>hello-world-api</module>
+		<module>hello-world-domain</module>
+		<module>hello-world-infrastructure</module>
+	</modules>
+
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>3.4.3</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,28 +57,37 @@
 		</dependency>
 	</dependencies>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>3.4.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>2.2.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
     <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <docker.image.prefix></docker.image.prefix>
-                <docker.image.name>${project.artifactId}:${project.version}</docker.image.name>
-                <docker.allowInsecureRegistries>false</docker.allowInsecureRegistries>
-            </properties>
-        </profile>
-        <profile>
-            <id>stag</id>
-            <properties>
-                <docker.image.prefix>106975009347.dkr.ecr.ap-northeast-1.amazonaws.com/hello-world-service/</docker.image.prefix>
-                <docker.image.name>${project.artifactId}:${project.version}</docker.image.name>
-                <docker.allowInsecureRegistries>false</docker.allowInsecureRegistries>
-            </properties>
-        </profile>
         <profile>
             <id>prod</id>
             <properties>
                 <app.main.class>xxx</app.main.class>
-                <docker.image.prefix>docker.io/eulerlcs/</docker.image.prefix>
+                <docker.image.prefix>docker.io/eulerlcs</docker.image.prefix>
+                <docker.image.name>${project.artifactId}:${project.version}</docker.image.name>
+                <docker.allowInsecureRegistries>false</docker.allowInsecureRegistries>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>dev</id>
+            <properties>
+                <app.main.class>xxx</app.main.class>
+                <docker.image.prefix>106975009347.dkr.ecr.ap-northeast-1.amazonaws.com/hello-world-api</docker.image.prefix>
                 <docker.image.name>${project.artifactId}:${project.version}</docker.image.name>
                 <docker.allowInsecureRegistries>false</docker.allowInsecureRegistries>
             </properties>
@@ -98,41 +101,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <allowInsecureRegistries>${docker.allowInsecureRegistries}</allowInsecureRegistries>
-                    <!-- if use http, add a system property sendCredentialsOverHttp=true -->
-
-                    <from>
-                        <!-- <image>amazoncorretto:11.0.11</image>-->
-                        <image>
-                            amazoncorretto@sha256:d0119551910e57869c98dbd58be19bb1c6e031b832a2536a484eba7fec822d7e
-                        </image>
-                    </from>
-                    <to>
-                        <image>${docker.image.prefix}${docker.image.name}</image>
-                        <tags>
-                            <tag>latest</tag>
-                        </tags>
-                    </to>
-
-                    <container>
-                        <creationTime>${maven.build.timestamp}</creationTime>
-                        <volumes>
-                            <volume>/data</volume>
-                        </volumes>
-                        <environment>
-                            <!-- <spring.avtive.profile>prod</spring.avtive.profile>-->
-                            <TimeZone>Asia/Tokyo</TimeZone>
-                        </environment>
-                    </container>
-                </configuration>
-            </plugin>
-
         </plugins>
+
+    	<pluginManagement>
+	        <plugins>
+	            <plugin>
+	                <groupId>com.google.cloud.tools</groupId>
+	                <artifactId>jib-maven-plugin</artifactId>
+	                <version>3.1.1</version>
+	            </plugin>
+	        </plugins>
+    	</pluginManagement>
     </build>
 
 </project>
