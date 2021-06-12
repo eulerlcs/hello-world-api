@@ -1,0 +1,13 @@
+logging:
+  level:
+    root: warn
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql.ws.wwws.nri.co.jp:33062/hello?useUnicode=true&useSSL=true&useCharacterEncoding=utf-8&serverTimezone=JST
+    username: user01
+    password: 123456
+#    schema: classpath:db/schema.sql
+#    data: classpath:db/data.sql
+    
