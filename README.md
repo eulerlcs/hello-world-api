@@ -36,3 +36,10 @@ docker-compose up -d
 docker-compose -f docker\docker-compose-dev.yml up -d
 ```
 
+#### access
+
+```
+http://localhost:8888/api/v1/user/list
+http://localhost:8888/swagger-ui/index.html
+```
+

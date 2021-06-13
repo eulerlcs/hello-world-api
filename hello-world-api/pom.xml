@@ -17,6 +17,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
@@ -33,44 +37,44 @@
 	</dependencies>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <configuration>
-                    <allowInsecureRegistries>${docker.allowInsecureRegistries}</allowInsecureRegistries>
-                    <!-- if use http, add a system property sendCredentialsOverHttp=true -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<configuration>
+					<allowInsecureRegistries>${docker.allowInsecureRegistries}</allowInsecureRegistries>
+					<!-- if use http, add a system property sendCredentialsOverHttp=true -->
 
-                    <from>
-                        <!-- <image>amazoncorretto:11.0.11</image>-->
-                        <image>
-                            amazoncorretto@sha256:d0119551910e57869c98dbd58be19bb1c6e031b832a2536a484eba7fec822d7e
-                        </image>
-                    </from>
-                    <to>
-                        <image>${docker.image.prefix}${docker.image.name}</image>
-                        <tags>
-                            <tag>latest</tag>
-                        </tags>
-                    </to>
+					<from>
+						<!-- <image>amazoncorretto:11.0.11</image> -->
+						<image>
+							amazoncorretto@sha256:d0119551910e57869c98dbd58be19bb1c6e031b832a2536a484eba7fec822d7e
+						</image>
+					</from>
+					<to>
+						<image>${docker.image.prefix}${docker.image.name}</image>
+						<tags>
+							<tag>latest</tag>
+						</tags>
+					</to>
 
-                    <container>
-                        <creationTime>${maven.build.timestamp}</creationTime>
-                        <volumes>
-                            <volume>/data</volume>
-                        </volumes>
-                        <environment>
-                            <!-- <spring.avtive.profile>prod</spring.avtive.profile>-->
-                            <TimeZone>Asia/Tokyo</TimeZone>
-                        </environment>
-                    </container>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+					<container>
+						<creationTime>${maven.build.timestamp}</creationTime>
+						<volumes>
+							<volume>/data</volume>
+						</volumes>
+						<environment>
+							<!-- <spring.avtive.profile>prod</spring.avtive.profile> -->
+							<TimeZone>Asia/Tokyo</TimeZone>
+						</environment>
+					</container>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
