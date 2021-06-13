@@ -1,6 +1,11 @@
-server:
-  port: 8888
-
 spring:
   profiles:
     active: dev
+
+    group:
+      dev:
+        - part-common
+        - part-dev
+      prod:
+        - part-common
+        - part-prod

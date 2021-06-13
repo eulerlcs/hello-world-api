@@ -5,9 +5,9 @@ logging:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:33061/hello?useUnicode=true&useSSL=true&useCharacterEncoding=utf-8&serverTimezone=GMT%2B9
-    username: user01
-    password: 123456
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:33061}/${MYSQL_DATABASE:hello}?useUnicode=true&useSSL=true&useCharacterEncoding=utf-8&serverTimezone=GMT%2B9
+    username: ${MYSQL_USER:user01}
+    password: ${MYSQL_PASSWORD:123456}
 #    schema: classpath:db/schema.sql
 #    data: classpath:db/data.sql
 

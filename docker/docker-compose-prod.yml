@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  hello_api:
+    image: hello-world-api:latest
+    container_name: hello_api_dev
+#    restart: always
+    environment:
+      MYSQL_HOST: hello_db_dev
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: hello
+      MYSQL_USER: user01
+      MYSQL_PASSWORD: 123456
+      TZ: 'Asia/Tokyo'
+    ports:
+    - 8888:8888
+
+networks:
+  default:
+    name: hello-network-dev
