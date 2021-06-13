@@ -6,14 +6,14 @@
 	<parent>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-parent</artifactId>
-	    <version>2.5.0</version>
+	    <version>2.5.1</version>
 		<relativePath />
 	</parent>
 	<groupId>com.github.eulerlcs</groupId>
-	<artifactId>hello-world-api</artifactId>
+	<artifactId>hello-world-service</artifactId>
 	<version>0.0.1</version>
-	<name>hello-world-api</name>
-	<description>Demo project for OpenApi3</description>
+	<name>hello-world-service</name>
+	<description>Demo project for monolithic</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -27,7 +27,7 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>3.2.0</version>
+			<version>3.4.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,20 +65,26 @@
 
     <profiles>
         <profile>
-            <id>prod</id>
+            <id>dev</id>
             <properties>
-                <app.main.class>xxx</app.main.class>
-                <docker.image.prefix>docker.io/eulerlcs</docker.image.prefix>
+                <docker.image.prefix></docker.image.prefix>
                 <docker.image.name>${project.artifactId}:${project.version}</docker.image.name>
                 <docker.allowInsecureRegistries>false</docker.allowInsecureRegistries>
             </properties>
         </profile>
-
         <profile>
-            <id>dev</id>
+            <id>stag</id>
+            <properties>
+                <docker.image.prefix>106975009347.dkr.ecr.ap-northeast-1.amazonaws.com/hello-world-service/</docker.image.prefix>
+                <docker.image.name>${project.artifactId}:${project.version}</docker.image.name>
+                <docker.allowInsecureRegistries>false</docker.allowInsecureRegistries>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
             <properties>
                 <app.main.class>xxx</app.main.class>
-                <docker.image.prefix>106975009347.dkr.ecr.ap-northeast-1.amazonaws.com/hello-world-api</docker.image.prefix>
+                <docker.image.prefix>docker.io/eulerlcs/</docker.image.prefix>
                 <docker.image.name>${project.artifactId}:${project.version}</docker.image.name>
                 <docker.allowInsecureRegistries>false</docker.allowInsecureRegistries>
             </properties>
@@ -107,7 +113,7 @@
                         </image>
                     </from>
                     <to>
-                        <image>${docker.image.prefix}/${docker.image.name}</image>
+                        <image>${docker.image.prefix}${docker.image.name}</image>
                         <tags>
                             <tag>latest</tag>
                         </tags>
