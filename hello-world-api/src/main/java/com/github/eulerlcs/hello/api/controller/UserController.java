@@ -15,7 +15,7 @@ import com.github.eulerlcs.hello.domain.service.UserService;
 
 // @Slf4j
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api")
 public class UserController {
 	@Autowired
 	private UserService userService;
@@ -25,18 +25,18 @@ public class UserController {
 		return new User();
 	}
 
-	@PutMapping({"/add" })
+	@PutMapping({"/v1/user/add" })
 	public int addUser(@ModelAttribute("user") User user) {
 		return userService.add(user);
 	}
 
-	@GetMapping({ "/", "/list" })
+	@GetMapping({ "/v1/user", "/v1/user/list" })
 	public List<User> selectAll() {
 		List<User> userList = userService.selectAll();
 
 		return userList;
 	}
-	@GetMapping("/{id}")
+	@GetMapping("/v1/user/{id}")
 	public User detail(@PathVariable Integer id) {
 		User user = userService.selectOne(id);
 
