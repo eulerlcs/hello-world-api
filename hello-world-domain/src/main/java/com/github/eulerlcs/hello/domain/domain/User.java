@@ -11,18 +11,18 @@ import lombok.Data;
 
 @Data
 public class User {
-	@ApiModelProperty(example = "null", required = false, hidden = true, value = "ユーザID")
+	@ApiModelProperty(position = 1, example = "null", required = false, hidden = true, value = "ユーザID")
 	@TableId(type = IdType.AUTO)
 	private Integer id;
-	@ApiModelProperty(example = "田中　一郎", value = "ユーザ名")
+	@ApiModelProperty(position = 2, example = "田中　一郎", value = "ユーザ名")
 	private String name;
-	@ApiModelProperty(example = "開発部", value = "所属")
+	@ApiModelProperty(position = 3, example = "開発部", value = "所属")
 	private String department;
 //	@DateTimeFormat(iso = ISO.DATE_TIME)
-	@JsonIgnore
-	@ApiModelProperty(example = "2020-08-30T02:09:53", required = false, value = "作成日時")
+	@ApiModelProperty(position = 4, example = "2021-06-20T00:04:53", required = false, value = "作成日時")
 	private LocalDateTime created_at;
 //	@DateTimeFormat(iso = ISO.DATE_TIME)
-	@ApiModelProperty(example = "2020-08-30T02:09:53", hidden = true, required = false, value = "更新日時")
+	@ApiModelProperty(position = 5, example = "2021-06-20T00:05:12", hidden = true, required = false, value = "更新日時")
+	@JsonIgnore
 	private LocalDateTime updated_at;
 }
