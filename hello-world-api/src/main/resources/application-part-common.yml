@@ -1,2 +1,16 @@
 server:
   port: 8888
+
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+#    serialization:
+#      write-dates-as-timestamps: false
+#    date-format: yyyy-MM-dd'T'HH:mm:ss
+#    time-zone: Asia/Tokyo
+ 
+kpl:
+  jackson:
+    local-date-format: yyyy-MM-dd
+    local-time-format: HH:mm:ss
+    local-datetime-format: yyyy-MM-dd'T'HH:mm:ss
