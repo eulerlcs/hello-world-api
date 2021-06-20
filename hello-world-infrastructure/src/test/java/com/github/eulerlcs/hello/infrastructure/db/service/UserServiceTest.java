@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.github.eulerlcs.hello.domain.domain.User;
-import com.github.eulerlcs.hello.domain.service.UserService;
+import com.github.eulerlcs.hello.domain.entity.User;
+import com.github.eulerlcs.hello.domain.repository.UserRepository;
 
 @SpringBootTest
 class UserServiceTest {
 	@Autowired
-	private UserService userService;
+	private UserRepository userService;
 
 	@Test
 	void testSelectUser() {

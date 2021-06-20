@@ -1,4 +1,4 @@
-package com.github.eulerlcs.hello.api.config;
+package com.github.eulerlcs.hello.application.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

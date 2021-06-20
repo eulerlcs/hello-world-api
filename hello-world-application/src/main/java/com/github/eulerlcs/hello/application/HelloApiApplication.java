@@ -1,4 +1,4 @@
-package com.github.eulerlcs.hello.api;
+package com.github.eulerlcs.hello.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

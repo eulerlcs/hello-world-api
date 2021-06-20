@@ -1,18 +1,15 @@
-package com.github.eulerlcs.hello.domain.domain;
+package com.github.eulerlcs.hello.api.model;
 
 import java.time.LocalDateTime;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-public class User {
+public class UserModel {
 	@ApiModelProperty(position = 1, example = "null", required = false, hidden = true, value = "ユーザID")
-	@TableId(type = IdType.AUTO)
 	private Integer id;
 	@ApiModelProperty(position = 2, example = "田中　一郎", value = "ユーザ名")
 	private String name;

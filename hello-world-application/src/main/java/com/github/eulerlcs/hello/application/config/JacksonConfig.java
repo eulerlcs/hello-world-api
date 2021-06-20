@@ -1,4 +1,4 @@
-package com.github.eulerlcs.hello.api.config;
+package com.github.eulerlcs.hello.application.config;
 
 import java.io.IOException;
 import java.text.ParseException;

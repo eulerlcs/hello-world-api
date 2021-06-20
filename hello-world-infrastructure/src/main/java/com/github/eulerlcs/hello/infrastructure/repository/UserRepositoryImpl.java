@@ -1,4 +1,4 @@
-package com.github.eulerlcs.hello.infrastructure.db.service.impl;
+package com.github.eulerlcs.hello.infrastructure.repository;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.eulerlcs.hello.domain.domain.User;
-import com.github.eulerlcs.hello.domain.service.UserService;
-import com.github.eulerlcs.hello.infrastructure.db.mapper.UserMapper;
+import com.github.eulerlcs.hello.domain.entity.User;
+import com.github.eulerlcs.hello.domain.repository.UserRepository;
+import com.github.eulerlcs.hello.infrastructure.repository.mapper.UserMapper;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserRepositoryImpl implements UserRepository {
 
 	@Autowired
 	UserMapper userMapper;
