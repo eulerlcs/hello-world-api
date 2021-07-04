@@ -9,23 +9,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.github.eulerlcs.hello.api.model.UserModel;
+import com.github.eulerlcs.hello.api.model.AccountModel;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
-@Api(value = "user")
-public interface UserApi {
+@Api(value = "account")
+public interface AccountApi {
 
 	@ApiOperation(value = "ユーザ追加", nickname = "addUser", notes = "ユーザを新規する", response = String.class)
-	UserModel addUser(UserModel user);
+	AccountModel addAccount(AccountModel account);
 
 	@ApiOperation(value = "すべてユーザの取得", nickname = "selectAll", notes = "すべてのユーザを取得する", response = String.class)
-	List<UserModel> selectAll();
+	List<AccountModel> selectAll();
 
 	@ApiOperation(value = "個別ユーザの取得", nickname = "detail", notes = "個別ユーザを取得する", response = String.class)
-	UserModel detail(Integer id);
+	AccountModel detail(Integer id);
 
 	@ApiOperation(value = "日付移送の確認", nickname = "testDate", notes = "日時をそのままで返す", response = String.class)
 	Date testDate(

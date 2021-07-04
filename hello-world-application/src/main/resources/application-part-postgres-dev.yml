@@ -1,0 +1,16 @@
+logging:
+  level:
+    root: info
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:54321}/${POSTGRES_DATABASE:hello}
+    username: ${MYSQL_USER:user01}
+    password: ${MYSQL_PASSWORD:123456}
+#    schema: classpath:db/schema.sql
+#    data: classpath:db/data.sql
+
+mybatis-plus:
+  configuration: 
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

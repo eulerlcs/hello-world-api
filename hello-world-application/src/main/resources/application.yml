@@ -1,11 +1,17 @@
 spring:
   profiles:
-    active: dev
+    active: postgres-dev
 
     group:
-      dev:
+      mysql-dev:
         - part-common
-        - part-dev
-      prod:
+        - part-mysql-dev
+      mysql-prod:
         - part-common
-        - part-prod
+        - part-mysql-prod
+      postgres-dev:
+        - part-common
+        - part-postgres-dev
+      postgres-prod:
+        - part-common
+        - part-postgres-prod

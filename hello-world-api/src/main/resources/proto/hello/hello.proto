@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.github.eulerlcs.hello.api.proto.hello;
+
+option java_package = "com.github.eulerlcs.hello.api.proto.hello";
+
+message HelloRequest {
+  string query = 1;
+  int32 page_name = 2;
+  int32 result_per_page = 3;
+}

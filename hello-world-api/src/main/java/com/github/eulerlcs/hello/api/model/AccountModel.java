@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-public class UserModel {
+public class AccountModel {
 	@ApiModelProperty(position = 1, example = "null", required = false, hidden = true, value = "ユーザID")
 	private Integer id;
 	@ApiModelProperty(position = 2, example = "田中　一郎", value = "ユーザ名")
